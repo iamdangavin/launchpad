@@ -235,6 +235,9 @@ if($GLOBALS['pagenow'] === 'wp-login.php') {
 function launchpad_login_add_error_message() {
 	global $error, $site_options, $launchpad_login_failures, $launchpad_login_failures_cache;
 	
+	// Remove shake!
+	remove_action('login_head', 'wp_shake_js', 12);	
+	
 	// If we don't have a any login failures, we don't need an error message.
 	if(!$launchpad_login_failures) {
 		return;
