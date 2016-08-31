@@ -124,6 +124,12 @@ function launchpad_render_field_checkbox($field_output_name, $field_output_id = 
 		echo '<label class="' . $class . '" for="' . $field_output_id . '">';
 	}
 	echo '<input type="checkbox" name="' . $field_output_name . '" id="' . $field_output_id . '" ' . ($val ? ' checked="checked"' : '') . (isset($args['toggle']) ? ' data-toggle="' . htmlentities(json_encode($args['toggle'])) . '"' : '') . (isset($args['watch']) ? ' data-watch="' . htmlentities(json_encode($args['watch'])) . '"' : '') . '>';
+
+	if($subfield) {
+		echo $args['label'];
+		echo '</label>';
+	}
+
 }
 
 
@@ -1426,7 +1432,7 @@ function launchpad_meta_box_handler($post, $args) {
 			
 			// If this is a checkbox, show the name after the field.
 			if($v['args']['type'] === 'checkbox') {
-				echo $v['name']; 
+				echo $v['name'];
 			}
 			
 			switch($v['args']['type']) {
